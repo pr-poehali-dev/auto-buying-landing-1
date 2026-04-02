@@ -75,19 +75,19 @@ export default function Index() {
       {/* NAV */}
       <nav
         className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-4"
-        style={{ backgroundColor: "rgba(10,10,10,0.95)", borderBottom: "1px solid var(--gray)" }}
+        style={{ backgroundColor: "rgba(248,246,243,0.97)", borderBottom: "1px solid #e8e4df", backdropFilter: "blur(10px)" }}
       >
         <div className="flex items-center gap-2">
           <div className="w-2 h-8 rounded-sm" style={{ backgroundColor: "var(--red)" }} />
-          <span className="font-display text-xl font-bold tracking-widest uppercase text-white">
+          <span className="font-display text-xl font-bold tracking-widest uppercase" style={{ color: "#111" }}>
             АвтоВыкуп
           </span>
         </div>
-        <div className="hidden md:flex items-center gap-8 text-sm" style={{ color: "var(--gray-light)" }}>
-          <a href="#advantages" className="hover:text-white transition-colors">Преимущества</a>
-          <a href="#gallery" className="hover:text-white transition-colors">Галерея</a>
-          <a href="#process" className="hover:text-white transition-colors">Процесс</a>
-          <a href="#reviews" className="hover:text-white transition-colors">Отзывы</a>
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium" style={{ color: "#555" }}>
+          <a href="#advantages" className="hover:text-black transition-colors">Преимущества</a>
+          <a href="#gallery" className="hover:text-black transition-colors">Галерея</a>
+          <a href="#process" className="hover:text-black transition-colors">Процесс</a>
+          <a href="#reviews" className="hover:text-black transition-colors">Отзывы</a>
         </div>
         <a href="#contact" className="btn-primary px-5 py-2 text-sm rounded font-display tracking-wider uppercase">
           Оценить авто
@@ -96,69 +96,118 @@ export default function Index() {
 
       {/* HERO */}
       <section
-        className="noise-overlay relative min-h-screen flex items-center pt-20"
-        style={{ background: "linear-gradient(135deg, #0a0a0a 0%, #0f0f0f 50%, #180808 100%)" }}
+        className="relative min-h-screen flex items-center pt-20 overflow-hidden"
+        style={{ backgroundColor: "#f8f6f3" }}
       >
-        <div className="absolute right-0 top-0 w-1/2 h-full pointer-events-none" style={{ background: "radial-gradient(ellipse at 80% 40%, rgba(220,38,38,0.12) 0%, transparent 70%)" }} />
-        <div className="absolute bottom-0 left-0 w-96 h-96 pointer-events-none" style={{ background: "radial-gradient(ellipse at 0% 100%, rgba(220,38,38,0.06) 0%, transparent 70%)" }} />
-        <div
-          className="absolute top-1/4 right-8 font-display font-bold pointer-events-none select-none leading-none"
-          style={{ color: "rgba(220,38,38,0.04)", fontSize: "200px", lineHeight: 1 }}
-        >
-          АВТО
+        {/* Фоновые декоры */}
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 70% 50%, rgba(220,38,38,0.06) 0%, transparent 60%)" }} />
+        <div className="absolute top-0 right-0 w-px h-full pointer-events-none" style={{ background: "linear-gradient(to bottom, transparent, rgba(220,38,38,0.2), transparent)" }} />
+
+        {/* Авто на фоне — правая часть */}
+        <div className="absolute right-0 top-0 w-full md:w-3/5 h-full pointer-events-none overflow-hidden">
+          <img
+            src="https://cdn.poehali.dev/projects/0c126e86-5279-43b4-8807-ef1a1c759df0/files/1f734ad5-9d38-4f5c-b832-9f732a420017.jpg"
+            alt="Выкуп авто"
+            className="w-full h-full object-cover object-center"
+            style={{ opacity: 0.18, filter: "grayscale(30%)" }}
+          />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to right, #f8f6f3 0%, rgba(248,246,243,0.3) 40%, transparent 100%)" }} />
         </div>
 
-        <div className="container-custom relative z-10 py-20">
-          <div className="max-w-3xl">
+        {/* Вертикальная полоса-акцент */}
+        <div className="absolute left-0 top-0 w-1.5 h-full" style={{ backgroundColor: "var(--red)" }} />
+
+        <div className="container-custom relative z-10 py-24">
+          <div className="max-w-2xl">
+            {/* Бейдж */}
             <div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-body font-semibold uppercase tracking-wider mb-8"
-              style={{ backgroundColor: "rgba(220,38,38,0.15)", border: "1px solid rgba(220,38,38,0.3)", color: "var(--red-bright)" }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-body font-semibold uppercase tracking-wider mb-10"
+              style={{ backgroundColor: "rgba(220,38,38,0.1)", border: "1px solid rgba(220,38,38,0.25)", color: "var(--red)" }}
             >
               <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: "var(--red)" }} />
-              Работаем сейчас — звоните
+              Работаем сейчас · Москва и область
             </div>
 
-            <h1 className="font-display font-bold leading-none mb-6 text-white">
-              <span className="block text-6xl md:text-8xl tracking-tight" style={{ animation: "fade-up 0.6s ease-out forwards" }}>
-                ПРОДАЙТЕ
+            {/* Главный оффер по 4U */}
+            <h1 className="font-display font-bold leading-tight mb-2" style={{ color: "#111" }}>
+              <span className="block text-5xl md:text-7xl tracking-tight" style={{ animation: "fade-up 0.5s ease-out forwards" }}>
+                ПОЛУЧИТЕ
               </span>
-              <span className="block text-6xl md:text-8xl tracking-tight" style={{ color: "var(--red-bright)", animation: "fade-up 0.6s ease-out 0.15s both" }}>
-                АВТО
+              <span className="block text-5xl md:text-7xl tracking-tight" style={{ color: "var(--red)", animation: "fade-up 0.5s ease-out 0.1s both" }}>
+                НА 15–30%
               </span>
-              <span className="block text-6xl md:text-8xl tracking-tight" style={{ animation: "fade-up 0.6s ease-out 0.3s both" }}>
-                ЗА 1 ЧАС
+              <span className="block text-5xl md:text-7xl tracking-tight" style={{ animation: "fade-up 0.5s ease-out 0.2s both" }}>
+                БОЛЬШЕ,
+              </span>
+              <span className="block text-4xl md:text-6xl tracking-tight mt-1" style={{ color: "#333", animation: "fade-up 0.5s ease-out 0.3s both" }}>
+                чем у перекупщиков
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl mb-10 max-w-xl leading-relaxed" style={{ color: "#aaa", animation: "fade-up 0.6s ease-out 0.45s both" }}>
-              Бесплатная оценка. Деньги в день обращения. Берём любые автомобили — даже битые, кредитные и без документов.
+            {/* Подзаголовок — уточняющий оффер */}
+            <p
+              className="text-lg md:text-xl mt-6 mb-4 max-w-xl leading-relaxed font-semibold"
+              style={{ color: "#222", animation: "fade-up 0.5s ease-out 0.4s both" }}
+            >
+              Выкупаем авто за 1–3 часа — деньги на карту до того, как вы уедете домой
+            </p>
+            <p
+              className="text-base mb-10 max-w-lg leading-relaxed"
+              style={{ color: "#666", animation: "fade-up 0.5s ease-out 0.5s both" }}
+            >
+              Бесплатно приедем, оценим по рыночной базе и сразу назовём цену. Кредитные, битые, без документов — берём всё.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4" style={{ animation: "fade-up 0.6s ease-out 0.6s both" }}>
+            {/* Кнопки */}
+            <div className="flex flex-col sm:flex-row gap-4" style={{ animation: "fade-up 0.5s ease-out 0.55s both" }}>
               <a
                 href="#contact"
-                className="btn-primary px-8 py-4 text-base rounded inline-flex items-center gap-3 justify-center animate-pulse-red"
+                className="btn-primary px-8 py-4 text-base rounded inline-flex items-center gap-3 justify-center"
               >
                 <Icon name="Calculator" size={20} />
-                Узнать цену бесплатно
+                Узнать цену за 5 минут
               </a>
               <a
                 href="tel:+78001234567"
                 className="px-8 py-4 text-base rounded inline-flex items-center gap-3 justify-center font-display font-semibold tracking-wider uppercase transition-all"
-                style={{ border: "1px solid var(--gray)", color: "var(--white)", backgroundColor: "transparent" }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--red)"; e.currentTarget.style.color = "var(--red-bright)"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--gray)"; e.currentTarget.style.color = "var(--white)"; }}
+                style={{ border: "2px solid #ddd", color: "#222", backgroundColor: "transparent" }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--red)"; e.currentTarget.style.color = "var(--red)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#ddd"; e.currentTarget.style.color = "#222"; }}
               >
                 <Icon name="Phone" size={20} />
                 8 800 123-45-67
               </a>
             </div>
 
-            <div className="flex flex-wrap gap-8 mt-14 pt-10" style={{ borderTop: "1px solid var(--gray)", animation: "fade-up 0.6s ease-out 0.75s both" }}>
-              {[{ num: "6000+", label: "выкупленных авто" }, { num: "от 30 мин", label: "время оценки" }, { num: "9 лет", label: "на рынке" }].map((s) => (
+            {/* 4U-микрооферы под кнопками */}
+            <div className="flex flex-col gap-2 mt-8" style={{ animation: "fade-up 0.5s ease-out 0.65s both" }}>
+              {[
+                { icon: "Zap", text: "Выезд оценщика — бесплатно и в день обращения" },
+                { icon: "BadgeCheck", text: "Цена фиксируется письменно — не снизим после осмотра" },
+                { icon: "Banknote", text: "Деньги переводим ДО подписания ПТС" },
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "rgba(220,38,38,0.12)" }}>
+                    <Icon name={item.icon as "Zap"} size={12} style={{ color: "var(--red)" }} />
+                  </div>
+                  <span className="text-sm" style={{ color: "#444" }}>{item.text}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Статы */}
+            <div
+              className="flex flex-wrap gap-8 mt-12 pt-10"
+              style={{ borderTop: "1px solid #e5e5e5", animation: "fade-up 0.5s ease-out 0.75s both" }}
+            >
+              {[
+                { num: "6 000+", label: "выкупленных авто" },
+                { num: "от 30 мин", label: "время оценки" },
+                { num: "9 лет", label: "на рынке" },
+              ].map((s) => (
                 <div key={s.label}>
-                  <div className="font-display text-3xl font-bold text-white">{s.num}</div>
-                  <div className="text-sm mt-1" style={{ color: "var(--gray-light)" }}>{s.label}</div>
+                  <div className="font-display text-3xl font-bold" style={{ color: "#111" }}>{s.num}</div>
+                  <div className="text-sm mt-1" style={{ color: "#888" }}>{s.label}</div>
                 </div>
               ))}
             </div>
