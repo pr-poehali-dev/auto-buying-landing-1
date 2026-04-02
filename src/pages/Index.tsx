@@ -340,7 +340,7 @@ export default function Index() {
   const [selectedCar, setSelectedCar] = useState<CarType | null>(null);
   const [showPhotoModal, setShowPhotoModal] = useState(false);
 
-  const [calc, setCalc] = useState({ brand: "toyota", year: 2020, mileage: 80, condition: "хорошее" });
+  const [calc, setCalc] = useState({ brand: "toyota", model: "", year: 2020, mileage: 80, condition: "хорошее" });
   const [priceResult, setPriceResult] = useState<{ low: number; high: number } | null>(null);
   const [calcDone, setCalcDone] = useState(false);
 
@@ -547,12 +547,27 @@ export default function Index() {
               <div className="p-8" style={{ backgroundColor: "#f8f6f3" }}>
                 <h3 className="font-display text-lg font-bold uppercase tracking-wide mb-6" style={{ color: "#111" }}>Параметры авто</h3>
                 <div className="space-y-5">
-                  {/* Марка */}
-                  <div>
-                    <label className="block text-xs font-display font-semibold uppercase tracking-wider mb-2" style={{ color: "#555" }}>Марка автомобиля</label>
-                    <select value={calc.brand} onChange={(e) => setCalc({ ...calc, brand: e.target.value })} className="w-full px-4 py-3 rounded-lg text-sm outline-none transition-colors appearance-none" style={{ border: "1px solid #ddd", backgroundColor: "#fff", color: "#222" }}>
-                      {BRANDS.map((b) => <option key={b} value={b.toLowerCase()}>{b}</option>)}
-                    </select>
+                  {/* Марка + Модель */}
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-xs font-display font-semibold uppercase tracking-wider mb-2" style={{ color: "#555" }}>Марка</label>
+                      <select value={calc.brand} onChange={(e) => setCalc({ ...calc, brand: e.target.value, model: "" })} className="w-full px-3 py-3 rounded-lg text-sm outline-none transition-colors appearance-none" style={{ border: "1px solid #ddd", backgroundColor: "#fff", color: "#222" }}>
+                        {BRANDS.map((b) => <option key={b} value={b.toLowerCase()}>{b}</option>)}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-display font-semibold uppercase tracking-wider mb-2" style={{ color: "#555" }}>Модель</label>
+                      <input
+                        type="text"
+                        placeholder="Camry, X5, Golf…"
+                        value={calc.model}
+                        onChange={(e) => setCalc({ ...calc, model: e.target.value })}
+                        className="w-full px-3 py-3 rounded-lg text-sm outline-none transition-colors"
+                        style={{ border: "1px solid #ddd", backgroundColor: "#fff", color: "#222" }}
+                        onFocus={(e) => (e.currentTarget.style.borderColor = "var(--red)")}
+                        onBlur={(e) => (e.currentTarget.style.borderColor = "#ddd")}
+                      />
+                    </div>
                   </div>
 
                   {/* Год */}
@@ -618,6 +633,7 @@ export default function Index() {
                     <div className="grid grid-cols-2 gap-3">
                       {[
                         { label: "Марка", val: BRANDS.find(b => b.toLowerCase() === calc.brand) ?? calc.brand },
+                        { label: "Модель", val: calc.model || "—" },
                         { label: "Год", val: calc.year },
                         { label: "Пробег", val: `${calc.mileage} 000 км` },
                         { label: "Состояние", val: CONDITIONS.find(c => c.val === calc.condition)?.label ?? calc.condition },
